@@ -15,7 +15,7 @@ jobs:
             - v1-dependencies- # Fallback cache
       - run: |
           npm install
-          npm install -g firebase-tools
+          npm install -D firebase-tools
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
