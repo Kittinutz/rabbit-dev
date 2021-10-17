@@ -6,6 +6,7 @@ executors:
 
 jobs:
   build:
+    working_directory: /tmp
     executor: my-custom-executor
     steps:
       - checkout
@@ -22,6 +23,9 @@ jobs:
       - run: |
           echo $SERVICE_ACCOUNT | base64 -d >> service_account.json
           npm run build
+      - store_artifacts:
+          path: nextjs
+          destination: nextjs
   deploy:
     executor: my-custom-executor
     steps:
