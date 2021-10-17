@@ -5,7 +5,7 @@ executors:
       - image: cimg/node:14.18.1
 
 jobs:
-  build:
+  deploy:
     working_directory: .
     executor: my-custom-executor
     steps:
