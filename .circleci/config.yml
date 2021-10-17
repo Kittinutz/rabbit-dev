@@ -7,10 +7,24 @@ executors:
 jobs:
   my-job-name:
     executor: my-custom-executor
+    working_directory: /tmp
     steps:
       - checkout
+        - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies- # Fallback cache
       - run: |
+          npm install
+      - save_cache:
+        key: v1-dependencies-{{ checksum "package.json" }}
+        paths:
+          - node_modules
+      - run: |
+          echo $SERVICE_ACCOUNT | base64 -d >> service_account.json
           npm run build
+
+
 
 workflows:
   my-custom-workflow:
