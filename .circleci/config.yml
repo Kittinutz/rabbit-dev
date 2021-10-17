@@ -6,7 +6,7 @@ executors:
 
 jobs:
   build:
-    working_directory: /tmp
+    working_directory: .
     executor: my-custom-executor
     steps:
       - checkout
