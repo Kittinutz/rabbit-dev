@@ -7,7 +7,6 @@ executors:
 jobs:
   build:
     executor: my-custom-executor
-    working_directory: /tmp
     steps:
       - checkout
       - restore_cache:
@@ -25,7 +24,6 @@ jobs:
           npm run build
   deploy:
     executor: my-custom-executor
-    working_directory: /tmp
     steps:
       - run: |
           cat nextjs
