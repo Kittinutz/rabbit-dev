@@ -16,6 +16,7 @@ jobs:
             - v1-dependencies- # Fallback cache
       - run: |
           npm install
+          npm install -g firebasetool
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
@@ -23,18 +24,13 @@ jobs:
       - run: |
           echo $SERVICE_ACCOUNT | base64 -d >> service_account.json
           npm run build
+          firebase deploy --token "$FIREBASE_TOKEN" -P "default" --only "function:nextjs,hosting"
+
       - store_artifacts:
           path: nextjs
           destination: nextjs
-  deploy:
-    executor: my-custom-executor
-    steps:
-      - run: |
-          cat nextjs
+
 workflows:
-  my-custom-workflow:
+  deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - deploy
