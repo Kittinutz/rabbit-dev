@@ -6,7 +6,6 @@ executors:
 
 jobs:
   deploy:
-    working_directory: .
     executor: my-custom-executor
     steps:
       - checkout
