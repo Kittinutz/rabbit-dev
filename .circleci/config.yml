@@ -5,28 +5,32 @@ executors:
       - image: cimg/node:14.18.1
 
 jobs:
-  my-job-name:
+  build:
     executor: my-custom-executor
     working_directory: /tmp
     steps:
       - checkout
-        - restore_cache:
+      - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies- # Fallback cache
       - run: |
           npm install
       - save_cache:
-        key: v1-dependencies-{{ checksum "package.json" }}
-        paths:
-          - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - run: |
           echo $SERVICE_ACCOUNT | base64 -d >> service_account.json
           npm run build
-
-
-
+  deploy:
+    executor: my-custom-executor
+    working_directory: /tmp
+    steps:
+      - run: |
+          cat nextjs
 workflows:
   my-custom-workflow:
     jobs:
-      - my-job-name
+      - build
+      - deploy
