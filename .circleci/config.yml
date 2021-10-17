@@ -33,4 +33,6 @@ workflows:
   my-custom-workflow:
     jobs:
       - build
-      - deploy
+      - deploy:
+          requires:
+            - build
