@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "firebase-functions-test": "^0.3.3",
+    "firebase-tools": "^9.21.0",
     "rimraf": "^3.0.2",
     "shelljs": "^0.8.4"
   }
