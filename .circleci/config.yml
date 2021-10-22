@@ -22,7 +22,7 @@ jobs:
       - run: |
           echo $SERVICE_ACCOUNT | base64 -d >> service_account.json
           npm run build
-          npm run deploy
+          ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
       - store_artifacts:
           path: nextjs
           destination: nextjs

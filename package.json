@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "predeploy": "npm run clean && next build",
-    "deploy": "./node_modules/.bin/firebase deploy --only functions:nextjs,hosting"
+    "deploy": "firebase deploy --only functions:nextjs,hosting"
   },
   "main": "server.js",
   "engines": {
