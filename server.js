@@ -3,11 +3,8 @@ const admin = require("firebase-admin");
 const functions = require("firebase-functions");
 const next = require("next");
 const config = require("./next.config");
-const serviceAccount = require('./service_account.json')
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
+admin.initializeApp();
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({
