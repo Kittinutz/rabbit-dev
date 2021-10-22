@@ -15,7 +15,6 @@ jobs:
             - v1-dependencies- # Fallback cache
       - run: |
           npm install
-          npm install -D firebase-tools
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
@@ -23,8 +22,7 @@ jobs:
       - run: |
           echo $SERVICE_ACCOUNT | base64 -d >> service_account.json
           npm run build
-          firebase deploy --token "$FIREBASE_TOKEN" -P "default" --only "function:nextjs,hosting"
-
+          npm run deploy
       - store_artifacts:
           path: nextjs
           destination: nextjs
