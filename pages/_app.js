@@ -10,6 +10,14 @@ export const theme = createTheme({
   typography: {
     fontFamily: 'Open Sans, sans-serif',
   },
+  palette: {
+    primary: {
+      main: "#0b143a"
+    },
+    secondary: {
+      main: "#e1a03b"
+    }
+  },
   components: {
     MuiCssBaseline: {
       styleOverrides: `
