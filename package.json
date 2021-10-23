@@ -15,12 +15,19 @@
     "node": "14"
   },
   "dependencies": {
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.0.4",
     "firebase-admin": "^10.0.0",
     "firebase-functions": "^3.15.7",
     "next": "^11.0.0",
+    "next-pwa": "^5.4.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "^1.43.3"
+    "styled-components": "^5.3.3"
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.3.3",

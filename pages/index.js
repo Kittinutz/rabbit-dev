@@ -1,4 +1,5 @@
 import { MainLayout } from '@/components/layout/'
+import { Typography } from '@mui/material'
 import Head from 'next/head'
 
 export default function Home() {
@@ -9,9 +10,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="title">
+      <Typography variant="h1">
         Welcome to Rabbitmansion
-      </h1>
+      </Typography>
+      <Typography variant="h2">
+        Welcome to Rabbitmansion
+      </Typography>
+      <Typography variant="h3">
+        Welcome to Rabbitmansion
+      </Typography>
+      <Typography variant="h4">
+        Welcome to Rabbitmansion
+      </Typography>
+      <Typography variant="h5">
+        Welcome to Rabbitmansion
+      </Typography>
+      <Typography variant="h6">
+        Welcome to Rabbitmansion
+      </Typography>
 
       <footer>
         <a

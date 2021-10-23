@@ -18,7 +18,17 @@ const handle = app.getRequestHandler();
 const server = functions.https.onRequest((request, response) => {
   // log the page.js file or resource being requested
   console.log("File: " + request.originalUrl);
-  return app.prepare().then(() => handle(request, response));
+  return app.prepare().then((req, res) => {
+    const parsedUrl = parse(req.url, true)
+    const { pathname } = parsedUrl
+
+    if (pathname === '/sw.js' || /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)) {
+      const filePath = join(__dirname, 'nextjs', pathname)
+      app.serveStatic(req, res, filePath)
+    } else {
+      handle(request, response)
+    }
+  });
 });
 
 exports.nextjs = { server };
