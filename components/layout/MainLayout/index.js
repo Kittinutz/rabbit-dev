@@ -1,9 +1,13 @@
 import { HeadNav } from '@/components/nav'
-export default function MainLayout({ children }) {
+import { Container } from '@mui/material'
+export default function MainLayout({ children, headerTheme = "transparent" }) {
   return (
     <>
-      <HeadNav />
-      <main>{children}</main>
+      <HeadNav theme={headerTheme} />
+      <main>
+        {children}
+      </main>
+
     </>
   )
 }

@@ -1,44 +1,28 @@
+import { LandingBanner } from '@/components/banner'
 import { MainLayout } from '@/components/layout/'
-import { Typography } from '@mui/material'
+import { headerTheme } from '@/components/nav/HeadNav'
+import { Container } from '@mui/material'
 import Head from 'next/head'
 
 export default function Home() {
   return (
-    <div className="container">
+    <MainLayout headerTheme={headerTheme.transparent}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Typography variant="h1">
-        Welcome to Rabbitmansion
-      </Typography>
-      <Typography variant="h2">
-        Welcome to Rabbitmansion
-      </Typography>
-      <Typography variant="h3">
-        Welcome to Rabbitmansion
-      </Typography>
-      <Typography variant="h4">
-        Welcome to Rabbitmansion
-      </Typography>
-      <Typography variant="h5">
-        Welcome to Rabbitmansion
-      </Typography>
-      <Typography variant="h6">
-        Welcome to Rabbitmansion
-      </Typography>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}Kittinut
-        </a>
-      </footer>
-
+      <LandingBanner />
+      <Container>
+        <footer>
+          <a
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Powered by{' '}Kittinut
+          </a>
+        </footer>
+      </Container>
       <style jsx>{`
         .container {
           min-height: 100vh;
@@ -184,13 +168,7 @@ export default function Home() {
           box-sizing: border-box;
         }
       `}</style>
-    </div>
-  )
-}
-Home.getLayout = (page) => {
-  return (
-    <MainLayout>
-      {page}
     </MainLayout>
+
   )
 }

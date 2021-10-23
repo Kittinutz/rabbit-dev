@@ -1,36 +1,19 @@
 import Head from 'next/head'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 
 import createCache from '@emotion/cache';
+import theme from '@/styles/theme';
 const createEmotionCache = () => createCache({ key: 'css' })
 const clientSideEmotionCache = createEmotionCache()
-export const theme = createTheme({
-  typography: {
-    fontFamily: 'Open Sans, sans-serif',
-  },
-  palette: {
-    primary: {
-      main: "#0b143a"
-    },
-    secondary: {
-      main: "#e1a03b"
-    }
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: `
-        font-family: 'Open Sans', sans-serif;
-      `,
-    },
-  },
-});
+
 
 export default function MyApp({ Component, pageProps }) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page)
   const { emotionCache = clientSideEmotionCache } = pageProps
+
   return getLayout(
     <>
       <CacheProvider value={emotionCache}>
