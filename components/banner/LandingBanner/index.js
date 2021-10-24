@@ -12,7 +12,12 @@ const BannerBackground = styled(Box)(({ theme }) => ({
 }))
 
 const HeroImage = styled(Box)(({ theme }) => ({
-  backgroundImage: `linear-gradient(rgba(1, 1, 1, 0.3), rgba(1, 1, 1, 0.3)), url("/banner/landingbanner.jpeg")`,
+  backgroundImage: `linear-gradient(rgba(1, 1, 1, 0.3), rgba(1, 1, 1, 0.3)), image-set(
+    url("/banner/landingbanner-1x.png") 1x,
+    url("/banner/landingbanner-2x.png") 2x)`,
+  backgroundImage: `linear-gradient(rgba(1, 1, 1, 0.3), rgba(1, 1, 1, 0.3)), -webkit-image-set(
+    url("/banner/landingbanner-1x.png") 1x,
+    url("/banner/landingbanner-2x.png") 2x)`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
@@ -22,8 +27,19 @@ const HeroImage = styled(Box)(({ theme }) => ({
 }))
 
 const ReviewImage = styled('img')(({ theme }) => ({
-  width: theme.mixins.rem(120),
+  width: theme.mixins.rem(80),
+  borderRadius: theme.mixins.rem(8)
 }))
+
+const LaddingContent = styled(Container)(({ theme }) => ({
+  backdropFilter: `blur(4px)`,
+  maxWidth: theme.mixins.rem(400),
+
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: theme.mixins.rem(800),
+  },
+}))
+
 const LandingBanner = () => {
   return (
     <Box component="section" mt="-75px">
@@ -36,7 +52,7 @@ const LandingBanner = () => {
           height="100%"
           justifyContent="center"
         >
-          <Container maxWidth="400">
+          <LaddingContent maxWidth="400">
             <Typography
               color="secondary"
               variant="h3"
@@ -49,28 +65,38 @@ const LandingBanner = () => {
               <Grid display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                 <Typography variant="body1" fontWeight="bold">Reviews from another platform</Typography>
                 <Box mt={4} textAlign="center">
-                  <Grid container display="flex" alignItems="center" justifyContent="center" spacing={3}>
-                    <Grid item>
+                  <Grid container display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+                    <Grid container display="flex" alignItems="center" justifyContent="center" my={2}>
                       <Box mx={2}>
-                        <ReviewImage src="/banner/platform/booking/review.jpg" alt="review-booking" />
+                        <ReviewImage
+                          sizes="(max-width: 600px) 100vw, 600px"
+                          srcset="
+                            /banner/platform/booking/rabbit1-review_baa4yh_c_scale,w_200.jpg 200w,
+                            /banner/platform/booking/rabbit1-review_baa4yh_c_scale,w_600.jpg 600w"
+                          src="/banner/platform/booking/rabbit1-review_baa4yh_c_scale,w_600.jpg"
+                          alt="rabbit1-review from booking.com"
+                        />
                         <Typography
                           variant="body1"
                           fontWeight="bold"
                         >
                           Rabbitmansion
-                          Booking.com
                         </Typography>
                       </Box>
-                    </Grid>
-                    <Grid item>
                       <Box mx={2}>
-                        <ReviewImage src="/banner/platform/booking/review.jpg" alt="review-booking" />
+                        <ReviewImage
+                          sizes="(max-width: 600px) 100vw, 600px"
+                          srcset="
+                            /banner/platform/booking/rabbit2-review_ixx2mq_c_scale,w_200.jpg 200w,
+                            /banner/platform/booking/rabbit2-review_ixx2mq_c_scale,w_600.jpg 600w"
+                          src="/banner/platform/booking/rabbit2-review_ixx2mq_c_scale,w_600.jpg"
+                          alt="rabbit2 review from booking.com"
+                        />
                         <Typography
                           variant="body1"
-                          fontWeight="bold"
+                          fontWeight="bold" rab
                         >
-                          Rabbitmansion2
-                          Booking.com
+                          Rabbitmansion 2
                         </Typography>
                       </Box>
                     </Grid>
@@ -78,11 +104,8 @@ const LandingBanner = () => {
                 </Box>
               </Grid>
             </Box>
-          </Container>
+          </LaddingContent>
         </Grid>
-        {/* <BannerBackground >
-
-        </BannerBackground> */}
       </HeroImage>
     </Box>
   )

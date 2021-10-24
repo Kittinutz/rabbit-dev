@@ -7,7 +7,6 @@ import {
   Stack,
   Drawer,
   Grid,
-  Typography,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -62,7 +61,7 @@ const ImageLogo = styled('img')(({ theme }) => ({
   height: theme.mixins.rem(50),
   marginRight: theme.spacing(2),
   backgroundColor: theme.palette.primary.main,
-  borderRadius: theme.mixins.rem(5)
+  borderRadius: theme.mixins.rem(8)
 }))
 
 const NavListMobile = styled(Stack)(({ theme }) => ({
@@ -164,7 +163,7 @@ const HeadNav = ({ theme: defaultTheme = headerDefaultTheme }) => {
               <Grid display="flex" alignItems="center">
                 <ImageLogo
                   sizes="(max-width: 500px) 100vw, 500px"
-                  srcset="
+                  srcSet="
                   /banner/logo/rabbit-logo_mosgix_c_scale,w_200.png 200w,
                   /banner/logo/rabbit-logo_mosgix_c_scale,w_500.png 500w
                 "
@@ -177,7 +176,7 @@ const HeadNav = ({ theme: defaultTheme = headerDefaultTheme }) => {
           </LogoContainer>
           <NavContainer>
             {/* Mobile */}
-            <HamburgerButton header_theme={theme} onClick={() => setOpen(true)}>
+            <HamburgerButton header_theme={theme} onClick={() => setOpen(true)} aria-label="Hamburger Button">
               <MenuIcon fontSize="large" />
             </HamburgerButton>
             <Drawer
