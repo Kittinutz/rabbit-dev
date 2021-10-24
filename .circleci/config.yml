@@ -19,8 +19,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run: |
-          echo $SERVICE_ACCOUNT | base64 -d >> service_account.json\
+      - run: 
+          name: Deploying
+          command:  |
+          echo $SERVICE_ACCOUNT | base64 -d >> service_account.json
           export NODE_ENV=production
           npm run build
           ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
