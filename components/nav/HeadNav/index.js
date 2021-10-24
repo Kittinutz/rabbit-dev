@@ -118,8 +118,8 @@ const NavList = styled(Stack)(({ theme, header_theme: _headerTheme }) => ({
 
 const HamburgerButton = styled(IconButton)(({ theme, header_theme: _headerTheme }) => ({
   color: _headerTheme === headerTheme.transparent ?
-    theme.palette.text.white :
-    theme.palette.brand.blue,
+    theme.palette.primary.main :
+    theme.palette.secondary.main,
 
   [theme.breakpoints.up('lg')]: {
     display: 'none',
