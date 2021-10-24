@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "lint": "next lint",
     "clean": "rimraf nextjs/",
     "dev": "next dev",
     "build": "next build",
@@ -33,6 +34,8 @@
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   },
   "devDependencies": {
+    "eslint": "^8.1.0",
+    "eslint-config-next": "11.1.2",
     "firebase-functions-test": "^0.3.3",
     "firebase-tools": "^9.21.0",
     "rimraf": "^3.0.2",

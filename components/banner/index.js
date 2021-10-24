@@ -1,1 +1,1 @@
-export { default as LandingBanner } from '@/components/banner/LandingBanner'
+export { default as LandingBanner } from '@/components/banner/LandingBanner';
