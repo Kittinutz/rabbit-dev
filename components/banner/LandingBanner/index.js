@@ -76,7 +76,7 @@ const LandingBanner = () => {
                             /banner/platform/booking/rabbit1-review_baa4yh_c_scale,w_200.jpg 200w,
                             /banner/platform/booking/rabbit1-review_baa4yh_c_scale,w_600.jpg 600w"
                           src="/banner/platform/booking/rabbit1-review_baa4yh_c_scale,w_600.jpg"
-                          alt="rabbit1-review from booking.com"
+                          alt="Rabbit1 review from booking.com"
                         />
                         <Typography
                           variant="body1"
@@ -92,7 +92,7 @@ const LandingBanner = () => {
                             /banner/platform/booking/rabbit2-review_ixx2mq_c_scale,w_200.jpg 200w,
                             /banner/platform/booking/rabbit2-review_ixx2mq_c_scale,w_600.jpg 600w"
                           src="/banner/platform/booking/rabbit2-review_ixx2mq_c_scale,w_600.jpg"
-                          alt="rabbit2 review from booking.com"
+                          alt="Rabbit2 review from booking.com"
                         />
                         <Typography
                           variant="body1"

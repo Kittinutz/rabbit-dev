@@ -1,7 +1,7 @@
 // pages/_document.js
 
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import theme from '@/styles/theme'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import theme from '@/styles/theme';
 
 class MyDocument extends Document {
   render() {
@@ -37,7 +37,7 @@ class MyDocument extends Document {
           <meta name='twitter:title' content='PWA App' />
           <meta name='twitter:description' content='Best PWA App in the world' />
           <meta name='twitter:image' content='https://yourdomain.com/icons/android-chrome-192x192.png' />
-          <meta name='twitter:creator' content='@DavidWShadow' />
+          <meta name='twitter:creator' content='@Rabbitmansion' />
           <meta property='og:type' content='website' />
           <meta property='og:title' content='PWA App' />
           <meta property='og:description' content='Best PWA App in the world' />
@@ -56,8 +56,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default MyDocument
+export default MyDocument;

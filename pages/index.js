@@ -1,14 +1,23 @@
-import { LandingBanner } from '@/components/banner'
-import { MainLayout } from '@/components/layout/'
-import { headerTheme } from '@/components/nav/HeadNav'
-import { Container } from '@mui/material'
-import Head from 'next/head'
+// import { LandingBanner } from '@/components/banner';
+// import { MainLayout } from '@/components/layout/';
+import { headerTheme } from '@/components/nav/HeadNav';
+import { CircularProgress, Container } from '@mui/material';
+import dynamic from 'next/dynamic';
+
+const MainLayout = dynamic(() => import('@/components/layout/').then((mod) => mod.MainLayout),
+  { loading: () => <CircularProgress /> }
+);
+
+const LandingBanner = dynamic(() => import('@/components/banner/LandingBanner'));
+
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <MainLayout headerTheme={headerTheme.transparent}>
+
       <Head>
-        <title>Create Next App</title>
+        <title>Rabbitmansion Hotel</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LandingBanner />
@@ -170,5 +179,5 @@ export default function Home() {
       `}</style>
     </MainLayout>
 
-  )
+  );
 }

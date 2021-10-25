@@ -1,1 +1,1 @@
-export { default as HeadNav } from '@/components/nav/HeadNav'
+export { default as HeadNav } from '@/components/nav/HeadNav';
