@@ -9,6 +9,7 @@ const MainLayout = dynamic(() => import('@/components/layout/').then((mod) => mo
 );
 
 const LandingBanner = dynamic(() => import('@/components/banner/LandingBanner'));
+const LandingHistory = dynamic(() => import('@/components/banner/LandingHistory'));
 
 import Head from 'next/head';
 
@@ -21,6 +22,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LandingBanner />
+      <LandingHistory />
       <Container>
         <footer>
           <a

@@ -13,11 +13,11 @@ import { Box, styled } from '@mui/system';
 
 const HeroImage = styled(Box)(({ theme }) => ({
   background: theme.palette.primary.main,
-  backgroundImage: 'linear-gradient(rgba(1, 1, 1, 0.3), rgba(1, 1, 1, 0.3)), url("/banner/landingbanner-2x.jpeg")',
-  backgroundImage: `linear-gradient(rgba(1, 1, 1, 0.3), rgba(1, 1, 1, 0.3)), image-set(
+  backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/banner/landingbanner-2x.jpeg")',
+  backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), image-set(
     url("/banner/landingbanner-1x.png") 1x,
     url("/banner/landingbanner-2x.jpeg") 2x)`,
-  backgroundImage: `linear-gradient(rgba(1, 1, 1, 0.3), rgba(1, 1, 1, 0.3)), -webkit-image-set(
+  backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), -webkit-image-set(
     url("/banner/landingbanner-1x.png") 1x,
     url("/banner/landingbanner-2x.jpeg") 2x)`,
   backgroundPosition: 'center',
@@ -34,7 +34,6 @@ const ReviewImage = styled('img')(({ theme }) => ({
 }));
 
 const LaddingContent = styled(Container)(({ theme }) => ({
-  backdropFilter: 'blur(4px)',
   maxWidth: theme.mixins.rem(400),
 
   [theme.breakpoints.up('sm')]: {
@@ -56,7 +55,7 @@ const LandingBanner = () => {
         >
           <LaddingContent maxWidth="400">
             <Typography
-              color="secondary"
+              color="text.primatry"
               variant="h3"
               textAlign="center"
               fontWeight="bold"
@@ -65,11 +64,14 @@ const LandingBanner = () => {
             </Typography>
             <Box mt={1}>
               <Grid display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                <Typography variant="body1" fontWeight="bold">Reviews from another platform</Typography>
+                <Typography variant="h5" fontWeight="bold">Local hotel in patong area.</Typography>
+                <Box my={1}>
+                  <Typography variant="body2">Arrive as guests, leave as friends</Typography>
+                </Box>
                 <Box mt={4} textAlign="center">
                   <Grid container display="flex" flexDirection="column" alignItems="center" justifyContent="center">
                     <Grid container display="flex" alignItems="center" justifyContent="center" my={2}>
-                      <Box mx={2}>
+                      {/* <Box mx={2}>
                         <ReviewImage
                           sizes="(max-width: 600px) 100vw, 600px"
                           srcSet="
@@ -100,7 +102,7 @@ const LandingBanner = () => {
                         >
                           Rabbitmansion 2
                         </Typography>
-                      </Box>
+                      </Box> */}
                     </Grid>
                   </Grid>
                 </Box>

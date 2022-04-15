@@ -26,9 +26,11 @@ let theme = createTheme({
     },
     background: {
       primaryContrast: '#fff',
+      grey: '#f7f9fc'
     },
     text: {
-      primary: '#fff'
+      primary: '#fff',
+      black: '#000'
     },
     shadow: {
       header: '0 0 16px 0 rgba(0, 0, 0, 0.15)',
