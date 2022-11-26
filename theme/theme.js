@@ -28,10 +28,6 @@ let theme = createTheme({
       primaryContrast: "#fff",
       grey: "#f7f9fc",
     },
-    text: {
-      primary: "#fff",
-      black: "#000",
-    },
     shadow: {
       header: "0 0 16px 0 rgba(0, 0, 0, 0.15)",
     },
