@@ -2,7 +2,7 @@
   "extends": ["next/core-web-vitals", "eslint:recommended"],
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
-    "quotes": ["error", "single"],
+    "quotes": ["error", "double"],
     "semi": ["error", "always"]
   }
 }

@@ -1,4 +1,3 @@
-
 const admin = require("firebase-admin");
 const functions = require("firebase-functions");
 const next = require("next");
@@ -20,15 +19,18 @@ const server = functions.https.onRequest((request, response) => {
 
   console.log("File: " + request.originalUrl);
   return app.prepare().then(() => {
-    const baseURL = request.protocol + '://' + request.headers.host + '/';
+    const baseURL = request.protocol + "://" + request.headers.host + "/";
     const reqUrl = new URL(request.url, baseURL);
-    const { pathname } = reqUrl
+    const { pathname } = reqUrl;
 
-    if (pathname === '/sw.js' || /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)) {
-      const filePath = join(__dirname, 'nextjs', pathname)
-      app.serveStatic(request, response, filePath)
+    if (
+      pathname === "/sw.js" ||
+      /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)
+    ) {
+      const filePath = join(__dirname, "nextjs", pathname);
+      app.serveStatic(request, response, filePath);
     } else {
-      handle(request, response)
+      handle(request, response);
     }
   });
 });

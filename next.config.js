@@ -1,20 +1,20 @@
-const path = require('path');
-const withPWA = require('next-pwa');
-const runtimeCaching = require('next-pwa/cache');
-
+const path = require("path");
+const withPWA = require("next-pwa");
+const runtimeCaching = require("next-pwa/cache");
 
 module.exports = withPWA({
+  swcMinify: true,
   pwa: {
-    disable: process.env.NODE_ENV === 'development',
+    disable: process.env.NODE_ENV === "development",
     register: true,
-    dest: 'public',
-    sw: 'service-worker.js',
+    dest: "public",
+    sw: "service-worker.js",
     runtimeCaching,
   },
-  distDir: 'nextjs',
+  distDir: "nextjs",
   optimizeFonts: true,
   sassOptions: {
-    outputStyle: 'compressed',
-    includePaths: [path.join(__dirname, 'styles')],
+    outputStyle: "compressed",
+    includePaths: [path.join(__dirname, "styles")],
   },
 });

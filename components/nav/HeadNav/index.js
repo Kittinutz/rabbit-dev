@@ -1,130 +1,128 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import {
-  Container,
-  Box,
-  IconButton,
-  Stack,
-  Drawer,
-  Grid,
-} from '@mui/material';
-import {
-  Menu as MenuIcon,
-  Close as CloseIcon,
-} from '@mui/icons-material';
-import { styled } from '@mui/system';
-import PropTypes from 'prop-types';
+import { Close as CloseIcon, Menu as MenuIcon } from "@mui/icons-material";
+import { Box, Container, Drawer, Grid, IconButton, Stack } from "@mui/material";
+import { styled } from "@mui/system";
+import Link from "next/link";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 // import Navigation from './Navigation';
 export const headerTheme = Object.freeze({
-  white: 'white',
-  transparent: 'transparent',
+  white: "white",
+  transparent: "transparent",
 });
 
 export const headerDefaultTheme = headerTheme.white;
 
-const Header = styled('header')(({ theme, header_theme: _headerTheme }) => ({
-  position: 'sticky',
-  background: _headerTheme === headerTheme.transparent ?
-    theme.palette.background.navyBlue :
-    theme.palette.background.primaryContrast,
-  boxShadow: _headerTheme === headerTheme.transparent ?
-    'none' :
-    theme.palette.shadow.header,
-  top: '-1px', // force to hide gap
+const Header = styled("header")(({ theme, header_theme: _headerTheme }) => ({
+  position: "sticky",
+  background:
+    _headerTheme === headerTheme.transparent
+      ? theme.palette.background.navyBlue
+      : theme.palette.background.primaryContrast,
+  boxShadow:
+    _headerTheme === headerTheme.transparent
+      ? "none"
+      : theme.palette.shadow.header,
+  top: "-1px", // force to hide gap
   left: 0,
   zIndex: 10,
-  width: '100%',
-  transition: 'all 200ms',
+  width: "100%",
+  transition: "all 200ms",
 }));
 
-const HeaderContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: `${theme.mixins.rem(12)} 0`,
+const HeaderContainer = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 }));
 
-const LogoContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
+const LogoContainer = styled(Box)(() => ({
+  display: "flex",
 }));
 
 const NavContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
+  display: "flex",
 
-  [theme.breakpoints.up('lg')]: {
-    flex: '1 1 auto',
+  [theme.breakpoints.up("lg")]: {
+    flex: "1 1 auto",
   },
 }));
 
-const ImageLogo = styled('img')(({ theme }) => ({
+const ImageLogo = styled("img")(({ theme }) => ({
   width: theme.mixins.rem(50),
   height: theme.mixins.rem(50),
   marginRight: theme.spacing(2),
   backgroundColor: theme.palette.primary.main,
-  borderRadius: theme.mixins.rem(8)
-}))
+  borderRadius: theme.mixins.rem(8),
+}));
 
 const NavListMobile = styled(Stack)(({ theme }) => ({
-  textTransform: 'uppercase',
-  padding: `${theme.mixins.rem(24)} ${theme.mixins.rem(4)} ${theme.mixins.rem(40)}`,
+  textTransform: "uppercase",
+  padding: `${theme.mixins.rem(24)} ${theme.mixins.rem(4)} ${theme.mixins.rem(
+    40
+  )}`,
 
-  'a.nav-link': {
+  "a.nav-link": {
     color: theme.palette.text.primary,
 
-    '&.active': {
+    "&.active": {
       color: theme.palette.brand.blue,
     },
   },
 
-  [theme.breakpoints.up('lg')]: {
-    display: 'none',
+  [theme.breakpoints.up("lg")]: {
+    display: "none",
   },
 }));
 
 const NavList = styled(Stack)(({ theme, header_theme: _headerTheme }) => ({
-  display: 'none',
-  textTransform: 'uppercase',
+  display: "none",
+  textTransform: "uppercase",
 
-  [theme.breakpoints.up('lg')]: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    width: '100%',
+  [theme.breakpoints.up("lg")]: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    width: "100%",
 
-    'a.nav-link': {
-      position: 'relative',
-      color: _headerTheme === headerTheme.transparent ?
-        theme.palette.text.white :
-        theme.palette.text.primary,
+    "a.nav-link": {
+      position: "relative",
+      color:
+        _headerTheme === headerTheme.transparent
+          ? theme.palette.text.white
+          : theme.palette.text.primary,
 
-      '&.active': {
-        ':after': {
+      "&.active": {
+        ":after": {
           content: '""',
-          width: '100%',
+          width: "100%",
           height: theme.mixins.rem(2),
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          position: "absolute",
+          left: "50%",
+          transform: "translateX(-50%)",
           bottom: theme.mixins.rem(-4),
           borderRadius: theme.mixins.rem(8),
-          background: _headerTheme === headerTheme.transparent ?
-            theme.palette.text.white :
-            theme.palette.brand.blue,
+          background:
+            _headerTheme === headerTheme.transparent
+              ? theme.palette.text.white
+              : theme.palette.brand.blue,
         },
       },
     },
   },
 }));
 
-const HamburgerButton = styled(IconButton)(({ theme, header_theme: _headerTheme }) => ({
-  color: _headerTheme === headerTheme.transparent ?
-    theme.palette.primary.main :
-    theme.palette.secondary.main,
+const HamburgerButton = styled(IconButton)(
+  ({ theme, header_theme: _headerTheme }) => ({
+    color:
+      _headerTheme === headerTheme.transparent
+        ? theme.palette.primary.main
+        : theme.palette.secondary.main,
 
-  [theme.breakpoints.up('lg')]: {
-    display: 'none',
-  },
-}));
+    [theme.breakpoints.up("lg")]: {
+      display: "none",
+    },
+  })
+);
 
 const CloseButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.brand.blue,
@@ -136,30 +134,29 @@ const HeadNav = ({ theme: defaultTheme = headerDefaultTheme }) => {
   useEffect(() => {
     if (defaultTheme === headerTheme.transparent) {
       const changeTheme = () => {
-        const newTheme = window.scrollY >= 80 ?
-          headerTheme.white :
-          headerTheme.transparent;
+        const newTheme =
+          window.scrollY >= 80 ? headerTheme.white : headerTheme.transparent;
 
         setTheme(newTheme);
       };
 
       changeTheme();
 
-      window.addEventListener('scroll', changeTheme);
+      window.addEventListener("scroll", changeTheme);
 
       // returned function will be called on component unmount
       return () => {
-        window.removeEventListener('scroll', changeTheme);
+        window.removeEventListener("scroll", changeTheme);
       };
     }
   }, [defaultTheme]);
 
   return (
-    <Header header_theme={theme} >
+    <Header header_theme={theme}>
       <Container>
         <HeaderContainer>
           <LogoContainer>
-            <Link href="/" style={{ display: 'flex' }}>
+            <Link href="/" style={{ display: "flex" }}>
               <Grid display="flex" alignItems="center">
                 <ImageLogo
                   sizes="(max-width: 500px) 100vw, 500px"
@@ -176,7 +173,11 @@ const HeadNav = ({ theme: defaultTheme = headerDefaultTheme }) => {
           </LogoContainer>
           <NavContainer>
             {/* Mobile */}
-            <HamburgerButton header_theme={theme} onClick={() => setOpen(true)} aria-label="Hamburger Button">
+            <HamburgerButton
+              header_theme={theme}
+              onClick={() => setOpen(true)}
+              aria-label="Hamburger Button"
+            >
               <MenuIcon fontSize="large" />
             </HamburgerButton>
             <Drawer
@@ -185,8 +186,8 @@ const HeadNav = ({ theme: defaultTheme = headerDefaultTheme }) => {
               onClose={() => setOpen(false)}
               sx={{
                 display: {
-                  xs: 'flex',
-                  lg: 'none',
+                  xs: "flex",
+                  lg: "none",
                 },
               }}
               PaperProps={{
@@ -195,25 +196,27 @@ const HeadNav = ({ theme: defaultTheme = headerDefaultTheme }) => {
                   top: 0,
                   bottom: 0,
                   right: 0,
-                  width: '100%',
+                  width: "100%",
                   maxWidth: {
-                    sm: '400px',
+                    sm: "400px",
                   },
-                }
+                },
               }}
             >
               <Container>
-                <HeaderContainer sx={{
-                  display: {
-                    xs: 'flex',
-                    lg: 'none',
-                  },
-                }}>
+                <HeaderContainer
+                  sx={{
+                    display: {
+                      xs: "flex",
+                      lg: "none",
+                    },
+                  }}
+                >
                   <LogoContainer>
                     {/* <BlackLogoImage /> */}
                     Logo
                   </LogoContainer>
-                  <NavContainer>
+                  <NavContainer py={3}>
                     <CloseButton onClick={() => setOpen(false)}>
                       <CloseIcon fontSize="large" />
                     </CloseButton>
